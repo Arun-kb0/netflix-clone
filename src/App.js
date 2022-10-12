@@ -1,6 +1,6 @@
 import React from 'react'
-import Banner from './Banner/Banner'
-import NavBar from './Components/NavBar'
+import Banner from './Components/Banner/Banner'
+import NavBar from './Components/NavBar/NavBar'
 
 
 function App() {
