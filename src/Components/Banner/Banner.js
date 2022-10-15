@@ -52,7 +52,8 @@ function Banner() {
       >
         <div className='banner'>
           <div className='content'>
-            <h1 className='title'>{movie ? movie.title : ""}</h1>
+            <h1 className='title'>{movie ? movie.title : '' }</h1>
+            
             <div className='banner-buttons'>
               <button className='button' onClick={()=>{
                 setViewVideo(1)
