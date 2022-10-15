@@ -17,13 +17,13 @@
 }
 
 .poster{
-    max-height: 250px;
+    max-height: 350px;
     margin-right: 10px;
     cursor: pointer;
 }
 
 .samllPoster{
-    max-height: 150px;
+    max-height: 250px;
     margin-right: 10px;
     cursor: pointer;
 }

@@ -4,7 +4,7 @@
 }
 
 .banner{
-    background-image: url();
+    
     background-size: cover;
     height: 1000px;
     color: white;
@@ -13,7 +13,7 @@
 }
 
 .content{
-    padding-top: 240px;
+    padding-top: 266px;
     height: 190px;
     padding-left: 15px;
 
