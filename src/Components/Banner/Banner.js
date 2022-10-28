@@ -7,13 +7,16 @@ import YouTube from 'react-youtube'
 
 function Banner() {
   const [movie, setMovie] = useState()
+  const [movieName, setMovieName] = useState('')
   const [urlId, setUrlId] = useState('')
   const [viewVideo, setViewVideo] = useState('')
 
   useEffect(() => {
     axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((respose) => {
-      console.log(respose.data.results[0])
+      console.log(respose.data.results[0].name)
       setMovie(respose.data.results[0])
+      setMovieName(respose.data.results[0].name ? respose.data.results[0].name : respose.data.results[0].title) 
+      console.log(movie)
     })
   }, [])
 
@@ -46,13 +49,13 @@ function Banner() {
 
 
   return (
-    <div>
-      <div
+    <div >
+      <div className='bannerImage'
         style={{ backgroundImage: `url(${movie ? imageUrl + movie.backdrop_path : ""})` }}
       >
         <div className='banner'>
           <div className='content'>
-            <h1 className='title'>{movie ? movie.title : '' }</h1>
+            <h1 className='title'>{movieName }</h1>
             
             <div className='banner-buttons'>
               <button className='button' onClick={()=>{
