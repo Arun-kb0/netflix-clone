@@ -8,7 +8,7 @@
     display: flex;
     justify-content: space-between;
     background-color: #111;
-    z-index: 1;
+    z-index: 10;
 
 }
 
@@ -24,5 +24,9 @@
     right: 20px;
     width:30px;
 
+}
+
+.avatar:hover{
+    cursor: pointer;
 }
 

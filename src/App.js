@@ -1,21 +1,25 @@
 import React from 'react'
-import Banner from './Components/Banner/Banner'
-import NavBar from './Components/NavBar/NavBar'
-import RowPost from './Components/RowPost/RowPost'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import Home from './Pages/Home'
+import Login from './Pages/Login'
+import Navbar from './Pages/SharedComponets/Navbar'
 import { originals, action, horror, trending, romance } from './urls'
 
 
 function App() {
   return (
     <div className='App'>
-      
-          <NavBar />
-          <Banner />
-          <RowPost url={trending} title='Trending' />
-          <RowPost url={originals} title='Netflix Originals' isSmall />
-          <RowPost url={action} title='Action' isSmall />
-          <RowPost url={horror} title='Horror' isSmall />
-          <RowPost url={romance} title='Romance' isSmall />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Navbar/>}>
+            <Route index element={<Home/>} />
+            
+          <Route path='/login' element={<Login/>}/>
+          </Route> 
+        </Routes>
+      </BrowserRouter>
+
 
 
     </div>
