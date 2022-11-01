@@ -13,10 +13,11 @@ const initialState={
 export const getMovies = createAsyncThunk('movies/getMovies',
     async (name,thunkAPI)=>{
         try{
-            const resp1 = await axios.get(originals)
-            const resp2 = await axios.get(action)
-            const resp3 = await axios.get(horror)
-            const resp4 = await axios.get(trending)
+           
+            const resp1 = await axios.get(trending)
+            const resp2 = await axios.get(originals)
+            const resp3 = await axios.get(action)
+            const resp4 = await axios.get(horror)
             const resp5 = await axios.get(romance)
             const resp =[
                 resp1.data.results,
@@ -48,9 +49,10 @@ const cartSlice = createSlice({
             state.isLoading=true
         },
         [getMovies.fulfilled]:(state,action)=>{
-            console.log(action)
+            
             state.isLoading=false
             state.allMovies = action.payload 
+            //console.log(state.allMovies)
         },
         [getMovies.rejected]:(state,action)=>{
             console.log(action)
@@ -59,6 +61,5 @@ const cartSlice = createSlice({
     }
 }) 
 
-console.log(cartSlice)
 
 export default cartSlice.reducer
