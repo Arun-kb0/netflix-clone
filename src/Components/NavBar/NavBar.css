@@ -18,6 +18,9 @@
     width: 80px;
 
 }
+.logo:hover{
+    cursor: pointer;
+}
 
 .avatar{
     position:fixed;
