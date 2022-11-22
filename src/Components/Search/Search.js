@@ -23,8 +23,7 @@ function Search() {
         <input type='text' placeholder='Search ' className='Search-input' 
         onChange={(e)=>{
           setValue(e.target.value)
-          if(value =='') navigate('/')
-          else if(e.target.value != value) navigate('/')
+          if(e.target.value ==='') navigate('/')
         }}/>
 
       </div>

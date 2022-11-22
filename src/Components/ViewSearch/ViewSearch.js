@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom'
 
 
 function ViewSearch() {
-    const { allMovies, searchIn ,searchStatus} = useSelector((state) => {
+    const { allMovies, searchIn, searchStatus } = useSelector((state) => {
         console.log(state.movies)
         return state.movies
     })
@@ -21,33 +21,26 @@ function ViewSearch() {
     const [searchMovies, setSearchMovies] = useState([])
     const [urlId, setUrlId] = useState('')
     const [Tmp, setTmp] = useState('')
-    
+
 
     const navigate = useNavigate()
 
     useEffect(() => {
-         
-       
-        if(searchStatus){
-
-        
+        if (searchStatus) {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchIn}&page=1&include_adult=false`)
-            .then((resp) => {
-            console.log('axios search call')
-
-               setSearchMovies(resp.data.results)
-              
-            })
-            .catch((error) => {
-                console.log('axios error')
-                console.log(error)
-            })
+                .then((resp) => {
+                    setSearchMovies(resp.data.results)
+                })
+                .catch((error) => {
+                    console.log('axios error')
+                    console.log(error)
+                })
             console.log('tmp== block')
 
-        }else{
+        } else {
             navigate('/')
         }
-    }, [])
+    }, [searchIn])
 
     console.log(searchMovies)
 
@@ -71,7 +64,7 @@ function ViewSearch() {
         })
     }
 
- 
+
     return (
         <div className='search-data'>
             <div className="posters">
@@ -81,7 +74,6 @@ function ViewSearch() {
                             <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
                             <p className='small-poster-text'>{obj.overview}</p>
                         </div>
-
                     )
                     : console.log('loading........')
                 }
