@@ -1,14 +1,14 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import './Search.css'
 import { BsSearch } from 'react-icons/bs';
-import {useDispatch,useSelector} from 'react-redux'
-import {filter} from '../../feature/store/cartSlice'
-import {useNavigate} from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { filter } from '../../feature/store/cartSlice'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
-function Search() {  
+function Search() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -16,30 +16,37 @@ function Search() {
 
   return (
     <section className='Search-bar' >
-     
+
 
       <div>
 
-        <input type='text' placeholder='Search ' className='Search-input' 
-        onChange={(e)=>{
-          setValue(e.target.value)
-          if(e.target.value ==='') navigate('/')
-        }}/>
+        <input type='text' placeholder='Search ' className='Search-input'
+          onChange={(e) => {
+            setValue(e.target.value)
+            if (e.target.value === '') navigate('/')
+          }}
+
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              console.log("search-btn " + value)
+              dispatch(filter({ value }))
+
+              navigate('/search')
+            }
+          }}
+        />
 
       </div>
 
 
       <div className='icon'
-      onClick={()=>{
-        console.log("search-btn "+ value)
-        dispatch(filter({value}))
-        
-        navigate('/search')
-        if(value ==''){
-        
-          navigate('/')
-        }
-      }}>
+        onClick={() => {
+          console.log("search-btn " + value)
+          dispatch(filter({ value }))
+
+          navigate('/search')
+        }}
+      >
         <BsSearch />
       </div>
     </section>
