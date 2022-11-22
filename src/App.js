@@ -6,30 +6,30 @@ import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Navbar from './Pages/SharedComponets/Navbar'
 
-import {getMovies} from './feature/store/cartSlice'
-import {useDispatch,useSelector} from 'react-redux'
-
+import { getMovies } from './feature/store/cartSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import ViewSearchContents from './Pages/ViewSearchContents'
 
 function App() {
-  const {AllMovies,isLoading} = useSelector((store)=>{
+  const { AllMovies, isLoading } = useSelector((store) => {
     return store.movies
   })
-  const dispatch  = useDispatch()
+  const dispatch = useDispatch()
 
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getMovies())
-  },[])
+  }, [])
 
 
   return (
     <div className='App'>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Navbar/>}>
-            <Route index element={<Home/>} />
-            
-          <Route path='/login' element={<Login/>}/>
-          </Route> 
+          <Route path='/' element={<Navbar />}>
+            <Route index element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/search' element={<ViewSearchContents />} />
+          </Route>
         </Routes>
       </BrowserRouter>
 

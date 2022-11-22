@@ -12,8 +12,8 @@ function RowPost(props) {
 
   useEffect(() => {
     setMovies(props.movieData)
-    console.log('row post')
-    console.log(movies ? movies[0] : '')
+    //console.log('row post')
+    //console.log(movies ? movies[0] : '')
   })
 
   
@@ -30,7 +30,7 @@ function RowPost(props) {
 
   //for playing movie videos on youtube 
   const handleMovie = (id) => {
-    console.log(id)
+    //console.log(id)
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
       //console.log(response.data)
       if (response.data.results.length != 0) {

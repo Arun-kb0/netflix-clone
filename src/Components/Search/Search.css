@@ -1,0 +1,52 @@
+.Search-bar {
+    margin-left: 68%;
+    background: white;
+    padding: 2px;
+    width: 20%;
+    border: none;
+    border-radius: 9px;
+
+    display: flex;
+    background: #DCDCDC;
+}
+
+.Search-bar:hover {
+    background: #F5F5F5;
+}
+
+
+.Search-input {
+    width: 110%;
+    padding: 4px;
+    border: none;
+    outline: none;
+    margin-right: 4%;
+    margin-left: 4%;
+    font-size: medium;
+
+    background: #DCDCDC;
+
+
+}
+
+.Search-input:hover {
+    background: #F5F5F5;
+
+}
+
+
+.icon {
+    position: relative;
+    width: 6%;
+    padding: 4px 6px 4px 6px;
+    margin-left: 45px;
+    border: none;
+    border-radius: 5px;
+
+   
+}
+
+.icon:hover {
+    background-color: #111;
+    color: #F5F5F5;
+}
