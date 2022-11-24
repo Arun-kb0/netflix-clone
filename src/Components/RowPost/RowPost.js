@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from '../../axios'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import YouTube from 'react-youtube'
+import {AiOutlinePlus } from 'react-icons/ai'
 
 
 function RowPost(props) {
@@ -49,7 +50,13 @@ function RowPost(props) {
         {movies ?
           movies.map((obj) =>
             <div className='box'>
+              <div className={props.isSmall ? 'small-add-icon' : 'add-icon'} >
+              <AiOutlinePlus/>
+                </div>
+             
               <img onClick={() => handleMovie(obj.id)} className={props.isSmall ? "samllPoster" : "poster"} src={`${imageUrl + obj.poster_path}`} />
+              
+
               <p className={props.isSmall ? 'small-poster-text' : 'poster-text'}>{obj.overview}</p>
             </div>
 

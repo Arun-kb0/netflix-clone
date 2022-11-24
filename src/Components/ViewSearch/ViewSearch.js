@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import YouTube from 'react-youtube'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import axios from '../../axios'
-
+import {AiOutlinePlus} from 'react-icons/ai'
 
 import './ViewSearch.css'
 import { scryRenderedComponentsWithType } from 'react-dom/test-utils'
@@ -70,7 +70,10 @@ function ViewSearch() {
             <div className="posters">
                 {searchMovies ?
                     searchMovies.map((obj) =>
-                        <div className='box'>
+                        <div className='content-box'>
+                            <div className='small-add-icon' >
+                                <AiOutlinePlus />
+                            </div>
                             <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
                             <p className='small-poster-text'>{obj.overview}</p>
                         </div>

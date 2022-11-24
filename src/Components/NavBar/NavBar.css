@@ -16,6 +16,7 @@
     position:fixed;
     left: 20px;
     width: 80px;
+    padding: 4px;
 
 }
 .logo:hover{

@@ -7,15 +7,16 @@
 
 .box{
     position: relative;
+    margin-top: 15px;
     
 }
 
 .posters{
     display: flex;
     padding: 20px;
+    padding-top: 1px;
     overflow-x: scroll;
     overflow-y: hidden;
-
 
 }
  
@@ -117,4 +118,58 @@
     opacity: 1;
     z-index: 2;
   
+}
+
+.add-icon{
+    display: none;
+}
+
+.box:hover > .add-icon{
+    position: relative;
+    display: flex;
+    opacity: 1;
+    z-index: 2;
+    font-size: x-large;
+    color: #fff;
+    margin: 0px 0px 0px 237px;
+    padding: 10px;
+    background-color: rgb(51, 51, 51, .5);
+    width: 25px;
+    transition: 0.4s;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.box .add-icon:hover{
+    background-color: #e6e6e6;
+    color: #222;
+    cursor: pointer;
+}
+
+.small-add-icon{
+    display: none;
+}
+
+.box:hover .small-add-icon{
+    position: relative;
+    display: flex;
+    opacity: 1;
+    z-index: 2;
+    font-size: large;
+    color: #fff;
+    margin: 0px 0px 0px 144px;
+    padding: 10px;
+    background-color: rgb(51, 51, 51, .5);
+    width: 18px;
+    transition: 0.4s;
+    border: none;
+    border-radius: 5px;
+}
+
+
+.box .small-add-icon:hover{
+    background-color: #e6e6e6;
+    color: #222;
+    cursor: pointer;
 }

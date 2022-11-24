@@ -27,7 +27,7 @@ function Banner() {
     width: '100%',
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
-      autoplay: 0,
+      autoplay: 1,
     },
   };
 
