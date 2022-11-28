@@ -4,12 +4,21 @@ import { useEffect, useState } from 'react'
 import axios from '../../axios'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import YouTube from 'react-youtube'
-import {AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToList } from '../../feature/collection/collectionSlice'
+
 
 
 function RowPost(props) {
   const [movies, setMovies] = useState([])
   const [urlId, setUrlId] = useState('')
+  const dispatch = useDispatch([])
+
+  var [collection, setCollection] = useState([])
+  const { movieCollection } = useSelector((store) => {
+    return store.collection
+  })
 
   useEffect(() => {
     setMovies(props.movieData)
@@ -17,7 +26,7 @@ function RowPost(props) {
     //console.log(movies ? movies[0] : '')
   })
 
-  
+
 
   //react youtube options
   const opts = {
@@ -42,21 +51,40 @@ function RowPost(props) {
     })
   }
 
+  // for handling watch list data
+  function handleCollection(obj, title,index) {
+    let key= title+"_"+index
+    dispatch(addToList({obj}))
+  }
+
+  //for handele movies 
+  // function handleCollection(obj) {
+
+  //   let title = props.title
+  //   collection.push(obj)
+  //   dispatch(addToList({ collection, title }))
+  //   console.log(collection)
+  // }
+
 
   return (
     <div className='row'>
       <h2>{props.title}</h2>
       <div className="posters">
         {movies ?
-          movies.map((obj) =>
+          movies.map((obj, index) =>
             <div className='box'>
-              <div className={props.isSmall ? 'small-add-icon' : 'add-icon'} >
-              <AiOutlinePlus/>
-                </div>
-             
-              <img onClick={() => handleMovie(obj.id)} className={props.isSmall ? "samllPoster" : "poster"} src={`${imageUrl + obj.poster_path}`} />
-              
+              <div className={props.isSmall ? 'small-add-icon' : 'add-icon'}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleCollection(obj, props.title,index)
 
+                }}>
+                <AiOutlinePlus />
+              </div>
+
+              <img onClick={() => handleMovie(obj.id)} className={props.isSmall ? "samllPoster" : "poster"}
+                src={`${imageUrl + obj.poster_path}`} />
               <p className={props.isSmall ? 'small-poster-text' : 'poster-text'}>{obj.overview}</p>
             </div>
 

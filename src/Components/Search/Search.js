@@ -23,14 +23,13 @@ function Search() {
         <input type='text' placeholder='Search ' className='Search-input'
           onChange={(e) => {
             setValue(e.target.value)
-            if (e.target.value === '') navigate('/')
+            if (e.target.value === '') navigate(-1)
           }}
 
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              console.log("search-btn " + value)
+              // console.log("search-btn " + value)
               dispatch(filter({ value }))
-
               navigate('/search')
             }
           }}

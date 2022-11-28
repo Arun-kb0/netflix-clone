@@ -3,6 +3,7 @@ import "./Banner.css"
 import axios from '../../axios'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import YouTube from 'react-youtube'
+import {useNavigate} from 'react-router-dom'
 
 
 function Banner() {
@@ -10,6 +11,8 @@ function Banner() {
   const [movieName, setMovieName] = useState('')
   const [urlId, setUrlId] = useState('')
   const [viewVideo, setViewVideo] = useState('')
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios.get(`trending/all/week?api_key=${API_KEY}&language=en-US`).then((respose) => {
@@ -62,7 +65,14 @@ function Banner() {
                 setViewVideo(1)
                 return movie ? handleMovie(movie.id): "" 
               } /*movie ? handleMovie(movie.id): "" */} >Play</button>
-              <button className='button'>My list</button>
+
+              <button className='button'
+              onClick={(e)=>{
+                e.preventDefault()
+                navigate('/collections')
+              }} >My list</button>
+
+
             </div>
             <h1 className='discription'>{movie ? movie.overview : ""}</h1>
           </div>

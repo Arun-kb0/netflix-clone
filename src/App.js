@@ -5,10 +5,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './Pages/Home'
 import Login from './Pages/Login'
 import Navbar from './Pages/SharedComponets/Navbar'
+import Mycollection from './Pages/Mycollection'
 
 import { getMovies } from './feature/store/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import ViewSearchContents from './Pages/ViewSearchContents'
+
 
 function App() {
   const { AllMovies, isLoading } = useSelector((store) => {
@@ -29,7 +31,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/search' element={<ViewSearchContents />} />
+            <Route path='/collections' element={<Mycollection/>} />
+            
           </Route>
+          
+
         </Routes>
       </BrowserRouter>
 
