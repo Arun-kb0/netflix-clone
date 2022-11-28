@@ -51,21 +51,6 @@ function RowPost(props) {
     })
   }
 
-  // for handling watch list data
-  function handleCollection(obj, title,index) {
-    let key= title+"_"+index
-    dispatch(addToList({obj}))
-  }
-
-  //for handele movies 
-  // function handleCollection(obj) {
-
-  //   let title = props.title
-  //   collection.push(obj)
-  //   dispatch(addToList({ collection, title }))
-  //   console.log(collection)
-  // }
-
 
   return (
     <div className='row'>
@@ -76,9 +61,9 @@ function RowPost(props) {
             <div className='box'>
               <div className={props.isSmall ? 'small-add-icon' : 'add-icon'}
                 onClick={(e) => {
-                  e.preventDefault()
-                  handleCollection(obj, props.title,index)
 
+                  e.preventDefault()
+                  dispatch(addToList({ obj }))
                 }}>
                 <AiOutlinePlus />
               </div>
