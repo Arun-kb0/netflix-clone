@@ -6,11 +6,13 @@ import axios from '../../axios'
 import {AiOutlinePlus} from 'react-icons/ai'
 
 import './ViewSearch.css'
-import { scryRenderedComponentsWithType } from 'react-dom/test-utils'
 import { useNavigate } from 'react-router-dom'
+import {useDispatch} from 'react-redux'
+import {addToList} from '../../feature/collection/collectionSlice'
 
 
 function ViewSearch() {
+    
     const { allMovies, searchIn, searchStatus } = useSelector((state) => {
         console.log(state.movies)
         return state.movies
@@ -22,7 +24,7 @@ function ViewSearch() {
     const [urlId, setUrlId] = useState('')
     const [Tmp, setTmp] = useState('')
 
-
+    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -71,7 +73,10 @@ function ViewSearch() {
                 {searchMovies ?
                     searchMovies.map((obj) =>
                         <div className='content-box'>
-                            <div className='small-add-icon' >
+                            <div className='small-add-icon' 
+                            onClick={()=>{
+                                dispatch(addToList({obj}))
+                            }} >
                                 <AiOutlinePlus />
                             </div>
                             <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
