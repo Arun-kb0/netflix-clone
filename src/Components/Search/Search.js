@@ -16,10 +16,7 @@ function Search() {
 
   return (
     <section className='Search-bar' >
-
-
       <div>
-
         <input type='text' placeholder='Search ' className='Search-input'
           onChange={(e) => {
             setValue(e.target.value)
@@ -40,7 +37,7 @@ function Search() {
 
       <div className='icon'
         onClick={() => {
-          console.log("search-btn " + value)
+          // console.log("search-btn " + value)
           dispatch(filter({ value }))
 
           navigate('/search')

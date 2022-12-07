@@ -53,7 +53,7 @@ function RowPost(props) {
 
 
   return (
-    <div className='row'>
+    <div className='row' id={props.title}>
       <h2>{props.title}</h2>
       <div className="posters">
         {movies ?

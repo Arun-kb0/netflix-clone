@@ -3,26 +3,25 @@ import { useSelector } from 'react-redux'
 import YouTube from 'react-youtube'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import axios from '../../axios'
-import {AiOutlinePlus} from 'react-icons/ai'
+import { AiOutlinePlus } from 'react-icons/ai'
 
 import './ViewSearch.css'
 import { useNavigate } from 'react-router-dom'
-import {useDispatch} from 'react-redux'
-import {addToList} from '../../feature/collection/collectionSlice'
+import { useDispatch } from 'react-redux'
+import { addToList } from '../../feature/collection/collectionSlice'
 
 
 function ViewSearch() {
-    
+
     const { allMovies, searchIn, searchStatus } = useSelector((state) => {
         console.log(state.movies)
         return state.movies
     })
-    console.log('from viewsearch searchMovies')
-    console.log(searchIn)
+
 
     const [searchMovies, setSearchMovies] = useState([])
     const [urlId, setUrlId] = useState('')
-    const [Tmp, setTmp] = useState('')
+    const [arrayEmpty, setArrayEmpty] = useState(false)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -31,20 +30,23 @@ function ViewSearch() {
         if (searchStatus) {
             axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${searchIn}&page=1&include_adult=false`)
                 .then((resp) => {
+                    resp.data.results.length == 0 ? setArrayEmpty(true)
+                        : setArrayEmpty(false)
                     setSearchMovies(resp.data.results)
+
                 })
                 .catch((error) => {
                     console.log('axios error')
                     console.log(error)
                 })
-            console.log('tmp== block')
-
         } else {
             navigate('/')
         }
+
+
     }, [searchIn])
 
-    console.log(searchMovies)
+
 
     const opts = {
         height: '390',
@@ -67,23 +69,30 @@ function ViewSearch() {
     }
 
 
+    console.log('view search')
+    console.log(arrayEmpty)
+    console.log(searchMovies)
     return (
         <div className='search-data'>
             <div className="posters">
-                {searchMovies ?
-                    searchMovies.map((obj) =>
-                        <div className='content-box'>
-                            <div className='small-add-icon' 
-                            onClick={()=>{
-                                dispatch(addToList({obj}))
-                            }} >
-                                <AiOutlinePlus />
+                {
+                    arrayEmpty === false ?
+                        searchMovies.map((obj) =>
+                            <div className='content-box'>
+                                <div className='small-add-icon'
+                                    onClick={() => {
+                                        dispatch(addToList({ obj }))
+                                    }} >
+                                    <AiOutlinePlus />
+                                </div>
+                                <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
+                                <p className='small-poster-text'>{obj.overview}</p>
                             </div>
-                            <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
-                            <p className='small-poster-text'>{obj.overview}</p>
+                        )
+                        :
+                        <div className='notfound'>
+                            <h3>not found...!</h3>
                         </div>
-                    )
-                    : console.log('loading........')
                 }
             </div>
             <div>

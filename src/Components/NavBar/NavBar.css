@@ -35,21 +35,42 @@
 }
 
 
-.genere-btns{
+.genere-btns {
     position: absolute;
     display: flex;
     color: #fff;
     margin-left: 8%;
 
 }
-
 .genere-btns h3{
-
-    padding-left: 20px;
-    font-size: 16px;
-
+    font-size: 15px;
 }
 
-.genere-btns h3:hover{
+.genere-btns a{
+    padding-left: 20px;
+    color: #DCDCDC;
+    text-decoration: none;
+}
+
+
+.genere-btns > a:hover{
     cursor: pointer;
+    color: #fff;
+}
+
+.route-btns {
+    position: absolute;
+    display: flex;
+    color: #DCDCDC;
+    margin-left: 8%;
+
+   
+}
+.route-btns >h3{
+    padding-left: 20px;
+    font-size: 15px;
+}
+.route-btns > h3:hover{
+    cursor: pointer;
+    color: #fff;
 }
