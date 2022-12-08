@@ -5,7 +5,7 @@ import axios from '../../axios'
 import { API_KEY, imageUrl } from '../../constants/constant'
 import YouTube from 'react-youtube'
 import { AiOutlinePlus } from 'react-icons/ai'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addToList } from '../../feature/collection/collectionSlice'
 
 
@@ -15,15 +15,11 @@ function RowPost(props) {
   const [urlId, setUrlId] = useState('')
   const dispatch = useDispatch([])
 
-  var [collection, setCollection] = useState([])
-  const { movieCollection } = useSelector((store) => {
-    return store.collection
-  })
+
 
   useEffect(() => {
     setMovies(props.movieData)
     //console.log('row post')
-    //console.log(movies ? movies[0] : '')
   })
 
 
@@ -43,7 +39,7 @@ function RowPost(props) {
     //console.log(id)
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
       //console.log(response.data)
-      if (response.data.results.length != 0) {
+      if (response.data.results.length !== 0) {
         setUrlId(response.data.results[0])
       } else {
         console.log('Array empty')
@@ -55,11 +51,14 @@ function RowPost(props) {
   return (
     <div className='row' id={props.title}>
       <h2>{props.title}</h2>
-      <div className="posters">
+      
+      <div className={props.title=="Trending" ? "big-posters" :"posters"}>
         {movies ?
           movies.map((obj, index) =>
-            <div className='box'>
-              <div className={props.isSmall ? 'small-add-icon' : 'add-icon'}
+
+            <div className='box' key={index}>
+             
+              <div className={props.isSmall ? 'small-add-icon' : 'add-icon' }
                 onClick={(e) => {
 
                   e.preventDefault()

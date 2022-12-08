@@ -47,7 +47,7 @@ function MyCollection() {
         console.log(id)
         axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
             //console.log(response.data)
-            if (response.data.results.length != 0) {
+            if (response.data.results.length !== 0) {
                 setUrlId(response.data.results[0])
                 console.log(urlId)
             } else {
@@ -59,27 +59,13 @@ function MyCollection() {
 
     return (
 
-        <div className='search-data'>
-            {isEmpty ?
-                <div class='wathclist-empty'>
-                    
-                    <AiOutlineAppstoreAdd id="empty-icon" 
-                    onClick={()=>{
-                        navigate('/')
-                    }}/>
-                    <h3>watchlist is empty</h3>
-                </div>
-
-                :
-                <h2 id="watchlist-title">My watchlist</h2>
-            }
-
-
+        <div className='collection-data'>
+           <h2 id="watchlist-title">My watchlist</h2>
             <div className="posters">
 
-                {mylist ?
-                    mylist.map((obj) =>
-                        <div className='watchlist-box'>
+                {isEmpty===false ?
+                    mylist.map((obj,index) =>
+                        <div className='watchlist-box'  key={index}>
                             <div className='small-add-icon'
                                 onClick={() => {
                                     console.log(obj)
@@ -87,11 +73,19 @@ function MyCollection() {
                                 }}>
                                 <CiSquareRemove />
                             </div>
-                            <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} />
+                            <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} alt=""/>
                             <p className='small-poster-text'>{obj.overview}</p>
                         </div>
                     )
-                    : console.log('loading........')
+                    : 
+                    <div class='wathclist-empty'>
+                    <AiOutlineAppstoreAdd id="empty-icon" 
+                    onClick={()=>{
+                        navigate('/')
+                    }}/>
+                    <h3>watchlist is empty</h3>
+                </div>
+                    
 
 
                 }

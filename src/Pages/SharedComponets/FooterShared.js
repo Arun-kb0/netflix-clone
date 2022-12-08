@@ -1,14 +1,14 @@
 import React from 'react'
+import Footer from '../../Components/Footer/Footer'
 import {Outlet} from 'react-router-dom'
-import NavBar from '../../Components/NavBar/NavBar'
 
-function Navbar() {
+function FooterShared() {
   return (
     <div>
-        <NavBar/>
+        <Footer/>
         <Outlet/>
     </div>
   )
 }
 
-export default Navbar
+export default FooterShared

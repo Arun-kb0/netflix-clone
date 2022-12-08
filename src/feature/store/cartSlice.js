@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { baseUrl } from '../../constants/constant'
-import { API_KEY } from '../../constants/constant'
 import axios from '../../axios'
-import { originals, action, horror, trending, romance, searchUrl } from '../../urls'
+import { originals, action, horror, trending, romance } from '../../urls'
 
 const initialState = {
     allMovies: [],
@@ -44,21 +42,13 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         filter: (state, { payload }) => {
-
-            // console.log('filter name')
-            // console.log(payload.value)
-            // const tmp = payload.value
-            // if(payload.value == tmp){
-
             if (payload.value) {
 
                 state.searchData = []
                 state.searchIn = payload.value
                 payload.value ? state.searchStatus = true : state.searchStatus = false
 
-
-                // }else{
-            } else if (payload.value == "") {
+            } else if (payload.value === "") {
 
                 state.searchStatus = false
                 console.log('payload in empty')
@@ -70,7 +60,7 @@ const cartSlice = createSlice({
             //console.log(state.searchData)
 
         },
-     
+
 
     },
     extraReducers: {

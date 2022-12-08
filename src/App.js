@@ -4,9 +4,11 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import Login from './Pages/Login'
 import Navbar from './Pages/SharedComponets/Navbar'
+import FooterShared from './Pages/SharedComponets/FooterShared'
 import Mycollection from './Pages/Mycollection'
 import RowPost from './Components/RowPost/RowPost'
 import Banner from './Components/Banner/Banner'
+
 
 import { getMovies } from './feature/store/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,16 +16,14 @@ import ViewSearchContents from './Pages/ViewSearchContents'
 
 
 function App() {
-  const { AllMovies, isLoading } = useSelector((store) => {
-    return store.movies
-  })
+ 
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getMovies())
   }, [])
 
-  const { allMovies, searchData } = useSelector((store) => {
+  const { allMovies } = useSelector((store) => {
     return store.movies
   })
 
@@ -49,6 +49,7 @@ function App() {
             <Route path='/collections' element={<Mycollection />} />
           </Route>
         </Routes>
+        <FooterShared/>
       </BrowserRouter>
 
 

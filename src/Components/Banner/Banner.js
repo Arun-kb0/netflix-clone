@@ -40,7 +40,7 @@ function Banner() {
     console.log(id)
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
       console.log(response.data)
-      if (response.data.results.length != 0) {
+      if (response.data.results.length !== 0) {
         setUrlId(response.data.results[0])
       } else {
         console.log('Array empty')

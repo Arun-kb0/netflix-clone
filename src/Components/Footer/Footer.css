@@ -1,0 +1,24 @@
+.footer{
+    color: #DCDCDC;
+    background-color: #111;
+    position: relative;
+    margin: 10px 45%;
+    height: 65px;
+    display: block;
+}
+
+#footer-text{
+    padding-bottom: 10px;
+}
+
+#footer-icon{
+    text-decoration: none;
+    color: #DCDCDC;
+    margin: 0 42% 0;
+    font-size: 25px;
+}
+
+#footer-icon:hover{
+    color: #fff;
+    color: #e50914;
+}

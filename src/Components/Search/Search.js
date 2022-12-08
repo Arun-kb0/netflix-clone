@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Search.css'
 import { BsSearch } from 'react-icons/bs';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { filter } from '../../feature/store/cartSlice'
 import { useNavigate } from 'react-router-dom'
 
