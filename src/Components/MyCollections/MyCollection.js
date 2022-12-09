@@ -10,7 +10,7 @@ import { AiOutlineAppstoreAdd } from 'react-icons/ai'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { removeFromList } from '../../feature/collection/collectionSlice'
-import {useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 function MyCollection() {
@@ -60,12 +60,12 @@ function MyCollection() {
     return (
 
         <div className='collection-data'>
-           <h2 id="watchlist-title">My watchlist</h2>
+            <h2 id="watchlist-title">My watchlist</h2>
             <div className="posters">
 
-                {isEmpty===false ?
-                    mylist.map((obj,index) =>
-                        <div className='watchlist-box'  key={index}>
+                {isEmpty === false ?
+                    mylist.map((obj, index) =>
+                        <div className='watchlist-box' key={index}>
                             <div className='small-add-icon'
                                 onClick={() => {
                                     console.log(obj)
@@ -73,19 +73,25 @@ function MyCollection() {
                                 }}>
                                 <CiSquareRemove />
                             </div>
-                            <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} alt=""/>
+                            <img onClick={() => handleMovie(obj.id)} className="samllPoster" src={`${imageUrl + obj.poster_path}`} alt="" />
                             <p className='small-poster-text'>{obj.overview}</p>
                         </div>
                     )
-                    : 
+                    :
                     <div class='wathclist-empty'>
-                    <AiOutlineAppstoreAdd id="empty-icon" 
-                    onClick={()=>{
-                        navigate('/')
-                    }}/>
-                    <h3>watchlist is empty</h3>
-                </div>
-                    
+                        <AiOutlineAppstoreAdd id="empty-icon"
+                            onClick={() => {
+                                navigate('/')
+                                setTimeout(() => {
+                                    const el = document.getElementById("Trending")
+                                    if (el) {
+                                        el.scrollIntoView({ behavior: 'smooth' });
+                                    }
+                                }, 1);
+                            }} />
+                        <h3>watchlist is empty</h3>
+                    </div>
+
 
 
                 }
