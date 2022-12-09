@@ -13,6 +13,7 @@ import Banner from './Components/Banner/Banner'
 import { getMovies } from './feature/store/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import ViewSearchContents from './Pages/ViewSearchContents'
+import Error404page from './Pages/Error404page'
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/search' element={<ViewSearchContents />} />
             <Route path='/collections' element={<Mycollection />} />
+            <Route path='*' element={<Error404page/>} />
           </Route>
         </Routes>
         <FooterShared/>
